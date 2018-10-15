@@ -16,20 +16,23 @@ quotes = [
     source: "Napoleon Hill",
   },
   {
-    quote: "",
-    source: "",
+    quote: "There is nothing noble in being superior to your fellow man; true nobility is being superior to your former self.",
+    source: "Ernest Hemingway",
   },
   {
-    quote: "",
-    source: "",
+    quote: "That's one small step for [a] man, one giant leap for mankind",
+    source: "Neil Armstrong",
+    year: 1969,
   }
 ];
 
-
-
+//randomNumber generates a psuedo random number from 0-max
+function randomNumber(max) {
+  return Math.floor( Math.random() * max )
+}
 // getRandomQuote - given an array, returns a random element
 function getRandomQuote(array){
-  return array[Math.floor( Math.random() * array.length )];
+  return array[randomNumber(array.length)];
 }
 
 
@@ -51,10 +54,11 @@ function printQuote() {
   };
 
   stringOfQuoteProperties += '</p>';
+  document.body.style.backgroundColor = 'rgb(' + randomNumber(255) + ',' + randomNumber(255)  + ',' + randomNumber(255)  + ')';
 
   document.getElementById('quote-box').innerHTML = stringOfQuoteProperties;
 }
-
+setInterval( printQuote,20000 );
 
 // This event listener will respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
